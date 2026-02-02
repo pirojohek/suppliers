@@ -35,5 +35,5 @@ CREATE TABLE storage.t_supply_item
     c_id             SERIAL PRIMARY KEY,
     c_supply         INTEGER REFERENCES storage.t_supply (c_id)         NOT NULL,
     c_supplier_price INTEGER REFERENCES storage.t_supplier_product_price (c_id) NOT NULL,
-    c_weight_per_kg  INTEGER                                            NOT NULL
+    c_weight_per_kg DECIMAL(10,3) NOT NULL
 );
