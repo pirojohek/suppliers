@@ -19,7 +19,6 @@ public class JpaClientFindProductById implements FindProductByIdSpi {
     @Override
     public Optional<ProductData> findProductById(Long id) {
         Optional<ProductEntity> productEntity = this.productRepository.findById(id);
-
         return productEntity.map(productMapper::productEntityToProductData);
     }
 }

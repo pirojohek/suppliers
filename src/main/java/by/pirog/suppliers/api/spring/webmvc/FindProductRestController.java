@@ -1,6 +1,7 @@
 package by.pirog.suppliers.api.spring.webmvc;
 
 import by.pirog.suppliers.api.FindProductApi;
+import by.pirog.suppliers.api.spring.webmvc.mapper.ProductPresentationMapper;
 import by.pirog.suppliers.api.spring.webmvc.presentation.ProductPresentationV1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,20 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/product")
+@RequestMapping("/api/product")
 public class FindProductRestController {
 
     private final FindProductApi findProductApi;
+
+    private final ProductPresentationMapper mapper;
 
     @GetMapping("{id:\\d+}")
     public ResponseEntity<ProductPresentationV1> findProduct(
             @PathVariable("id") Long id
     ){
         var result = this.findProductApi.findProductById(id);
-        return ResponseEntity.ok(ProductPresentationV1.builder()
-                .id(result.id())
-                .name(result.name())
-                .type(result.productType())
-                .build());
+        return ResponseEntity.ok(mapper.productDataToProductPresentationV1(result));
     }
 }

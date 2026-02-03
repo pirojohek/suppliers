@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/accept-supply")
+@RequestMapping("/api/accept-supply")
 public class AcceptSupplyRestController {
 
     private final AcceptSupplyApi acceptSupplyApi;
@@ -21,8 +23,10 @@ public class AcceptSupplyRestController {
             SupplyAcceptData data
     ) {
         Long response = acceptSupplyApi.acceptSupply(data);
-        return ResponseEntity.ok(AcceptSupplyPresentationV1.builder()
-                .supplyId(response)
-                .build());
+
+        return ResponseEntity.created(URI.create("/api/supply/%d".formatted(response)))
+                .body(AcceptSupplyPresentationV1.builder()
+                        .supplyId(response)
+                        .build());
     }
 }
