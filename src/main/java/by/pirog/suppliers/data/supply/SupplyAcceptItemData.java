@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Builder
 public record SupplyAcceptItemData(
-        ProductType productType,
+        Long productId,
         BigDecimal weightPerKg
 ) {
 }
