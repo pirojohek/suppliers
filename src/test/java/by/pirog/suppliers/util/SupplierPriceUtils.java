@@ -21,4 +21,18 @@ public class SupplierPriceUtils {
                 .product(product)
                 .build();
     }
+
+    public static SupplierPriceEntity getSupplierPricePersistent(
+            SupplierEntity supplier,
+            ProductEntity product
+    ){
+        return SupplierPriceEntity.builder()
+                .id(1L)
+                .price(BigDecimal.valueOf(300))
+                .dateFrom(LocalDate.now().minusDays(2))
+                .dateTo(LocalDate.now().plusDays(2))
+                .supplier(supplier)
+                .product(product)
+                .build();
+    }
 }

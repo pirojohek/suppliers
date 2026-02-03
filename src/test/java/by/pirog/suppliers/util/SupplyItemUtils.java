@@ -18,4 +18,16 @@ public class SupplyItemUtils {
                 .weightPerKg(BigDecimal.valueOf(200))
                 .build();
     }
+
+    public static SupplyItemEntity getSupplyItemEntityPersistent(
+            SupplyEntity supply,
+            SupplierPriceEntity supplierPrice
+    ){
+        return SupplyItemEntity.builder()
+                .id(1L)
+                .supply(supply)
+                .supplierPrice(supplierPrice)
+                .weightPerKg(BigDecimal.valueOf(200))
+                .build();
+    }
 }

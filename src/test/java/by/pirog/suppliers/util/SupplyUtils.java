@@ -13,4 +13,12 @@ public class SupplyUtils {
                 .supplier(supplier)
                 .build();
     }
+
+    public static SupplyEntity getSupplyEntityPersistent(SupplierEntity supplier){
+        return SupplyEntity.builder()
+                .id(1L)
+                .supplyDate(LocalDate.now())
+                .supplier(supplier)
+                .build();
+    }
 }
