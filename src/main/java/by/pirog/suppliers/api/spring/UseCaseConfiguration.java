@@ -11,6 +11,7 @@ import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
 import by.pirog.suppliers.spi.supply.SaveSupplySpi;
+import by.pirog.suppliers.spi.supplyItem.SaveSupplyItemsSpi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -39,9 +40,9 @@ public class UseCaseConfiguration {
             FindSupplierApi findSupplierApi,
             FindProductApi findProductApi,
             FindCurrentProductSupplierPriceApi findCurrentProductSupplierPriceApi,
-            SaveSupplySpi saveSupplySpi) {
+            SaveSupplySpi saveSupplySpi, SaveSupplyItemsSpi saveSupplyItemsSpi) {
         return new AcceptSupplyUseCase(findSupplierApi, findProductApi, findCurrentProductSupplierPriceApi,
-                saveSupplySpi);
+                saveSupplySpi, saveSupplyItemsSpi);
     }
 }
 

@@ -1,6 +1,7 @@
 package by.pirog.suppliers.data.supply;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ public record SupplyAcceptData(
 
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate supplyDate,
+
         List<SupplyAcceptItemData> items
 ) {
 }
