@@ -1,8 +1,8 @@
 package by.pirog.suppliers.spi.spring.jpa;
 
 import by.pirog.suppliers.data.product.ProductData;
-import by.pirog.suppliers.model.ProductEntity;
-import by.pirog.suppliers.repository.ProductRepository;
+import by.pirog.suppliers.storage.model.ProductEntity;
+import by.pirog.suppliers.storage.repository.ProductRepository;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

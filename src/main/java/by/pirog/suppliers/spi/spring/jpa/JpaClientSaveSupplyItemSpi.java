@@ -1,10 +1,10 @@
 package by.pirog.suppliers.spi.spring.jpa;
 
 import by.pirog.suppliers.data.supplyItem.CreateSupplyItemData;
-import by.pirog.suppliers.model.SupplierPriceEntity;
-import by.pirog.suppliers.model.SupplyEntity;
-import by.pirog.suppliers.model.SupplyItemEntity;
-import by.pirog.suppliers.repository.SupplyItemRepository;
+import by.pirog.suppliers.storage.model.SupplierPriceEntity;
+import by.pirog.suppliers.storage.model.SupplyEntity;
+import by.pirog.suppliers.storage.model.SupplyItemEntity;
+import by.pirog.suppliers.storage.repository.SupplyItemRepository;
 import by.pirog.suppliers.spi.supplyItem.SaveSupplyItemsSpi;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;

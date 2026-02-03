@@ -1,10 +1,8 @@
-package by.pirog.suppliers.repository;
+package by.pirog.suppliers.storage.repository;
 
-import by.pirog.suppliers.model.ProductEntity;
+import by.pirog.suppliers.storage.model.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import javax.swing.text.html.Option;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {

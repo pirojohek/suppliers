@@ -1,6 +1,6 @@
-package by.pirog.suppliers.repository;
+package by.pirog.suppliers.storage.repository;
 
-import by.pirog.suppliers.model.SupplyEntity;
+import by.pirog.suppliers.storage.model.SupplyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

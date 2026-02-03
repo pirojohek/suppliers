@@ -1,7 +1,7 @@
 package by.pirog.suppliers.util;
 
 import by.pirog.suppliers.enums.ProductType;
-import by.pirog.suppliers.model.ProductEntity;
+import by.pirog.suppliers.storage.model.ProductEntity;
 
 public class ProductUtils {
 

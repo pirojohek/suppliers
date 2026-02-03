@@ -1,6 +1,6 @@
 package by.pirog.suppliers.util;
 
-import by.pirog.suppliers.model.SupplierEntity;
+import by.pirog.suppliers.storage.model.SupplierEntity;
 
 public class SupplierUtils {
 

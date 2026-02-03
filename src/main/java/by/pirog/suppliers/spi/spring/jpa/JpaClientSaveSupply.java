@@ -1,9 +1,9 @@
 package by.pirog.suppliers.spi.spring.jpa;
 
 import by.pirog.suppliers.data.supply.CreateSupplyData;
-import by.pirog.suppliers.model.SupplierEntity;
-import by.pirog.suppliers.model.SupplyEntity;
-import by.pirog.suppliers.repository.SupplyRepository;
+import by.pirog.suppliers.storage.model.SupplierEntity;
+import by.pirog.suppliers.storage.model.SupplyEntity;
+import by.pirog.suppliers.storage.repository.SupplyRepository;
 import by.pirog.suppliers.spi.supply.SaveSupplySpi;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;

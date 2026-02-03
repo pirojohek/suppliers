@@ -1,4 +1,4 @@
-package by.pirog.suppliers.model;
+package by.pirog.suppliers.storage.model;
 
 import by.pirog.suppliers.enums.ProductType;
 import jakarta.persistence.*;

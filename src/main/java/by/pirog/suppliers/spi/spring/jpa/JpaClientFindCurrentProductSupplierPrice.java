@@ -2,12 +2,11 @@ package by.pirog.suppliers.spi.spring.jpa;
 
 import by.pirog.suppliers.data.supplierPrice.FindSupplierProductPriceData;
 import by.pirog.suppliers.data.supplierPrice.SupplierProductPriceData;
-import by.pirog.suppliers.repository.SupplierPriceRepository;
+import by.pirog.suppliers.storage.repository.SupplierPriceRepository;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 @Component

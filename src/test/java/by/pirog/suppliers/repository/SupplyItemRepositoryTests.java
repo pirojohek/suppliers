@@ -1,7 +1,7 @@
-package by.pirog.suppliers.core.repository;
+package by.pirog.suppliers.repository;
 
-import by.pirog.suppliers.model.*;
-import by.pirog.suppliers.repository.SupplyItemRepository;
+import by.pirog.suppliers.storage.model.*;
+import by.pirog.suppliers.storage.repository.SupplyItemRepository;
 import by.pirog.suppliers.util.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

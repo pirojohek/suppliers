@@ -1,8 +1,8 @@
 package by.pirog.suppliers.util;
 
-import by.pirog.suppliers.model.SupplierPriceEntity;
-import by.pirog.suppliers.model.SupplyEntity;
-import by.pirog.suppliers.model.SupplyItemEntity;
+import by.pirog.suppliers.storage.model.SupplierPriceEntity;
+import by.pirog.suppliers.storage.model.SupplyEntity;
+import by.pirog.suppliers.storage.model.SupplyItemEntity;
 
 import java.math.BigDecimal;
 
