@@ -1,6 +1,5 @@
-package by.pirog.suppliers.core.model;
+package by.pirog.suppliers.model;
 
-import by.pirog.suppliers.core.enums.ProductType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,9 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(schema = "storage", name = "t_product")
-public class ProductEntity {
-
+@Table(schema = "storage", name = "t_supplier")
+public class SupplierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_id")
@@ -23,7 +21,7 @@ public class ProductEntity {
     @Column(name = "c_name")
     private String name;
 
-    @Column(name = "c_type")
-    @Enumerated(EnumType.STRING)
-    private ProductType type;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<SupplyEntity> supplies;
 }

@@ -1,7 +1,7 @@
 package by.pirog.suppliers.util;
 
-import by.pirog.suppliers.core.model.SupplierEntity;
-import by.pirog.suppliers.core.model.SupplyEntity;
+import by.pirog.suppliers.model.SupplierEntity;
+import by.pirog.suppliers.model.SupplyEntity;
 
 import java.time.LocalDate;
 

@@ -1,8 +1,8 @@
 package by.pirog.suppliers.core.repository;
 
-import by.pirog.suppliers.core.model.*;
+import by.pirog.suppliers.model.*;
+import by.pirog.suppliers.repository.SupplyItemRepository;
 import by.pirog.suppliers.util.*;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

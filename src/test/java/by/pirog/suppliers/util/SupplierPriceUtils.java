@@ -1,8 +1,8 @@
 package by.pirog.suppliers.util;
 
-import by.pirog.suppliers.core.model.ProductEntity;
-import by.pirog.suppliers.core.model.SupplierEntity;
-import by.pirog.suppliers.core.model.SupplierPriceEntity;
+import by.pirog.suppliers.model.ProductEntity;
+import by.pirog.suppliers.model.SupplierEntity;
+import by.pirog.suppliers.model.SupplierPriceEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

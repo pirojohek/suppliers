@@ -1,7 +1,8 @@
 package by.pirog.suppliers.core.repository;
 
-import by.pirog.suppliers.core.model.SupplierEntity;
-import by.pirog.suppliers.core.model.SupplyEntity;
+import by.pirog.suppliers.model.SupplierEntity;
+import by.pirog.suppliers.model.SupplyEntity;
+import by.pirog.suppliers.repository.SupplyRepository;
 import by.pirog.suppliers.util.SupplierUtils;
 import by.pirog.suppliers.util.SupplyUtils;
 import org.junit.jupiter.api.DisplayName;

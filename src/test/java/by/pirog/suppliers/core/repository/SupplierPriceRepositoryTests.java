@@ -1,8 +1,9 @@
 package by.pirog.suppliers.core.repository;
 
-import by.pirog.suppliers.core.model.ProductEntity;
-import by.pirog.suppliers.core.model.SupplierEntity;
-import by.pirog.suppliers.core.model.SupplierPriceEntity;
+import by.pirog.suppliers.model.ProductEntity;
+import by.pirog.suppliers.model.SupplierEntity;
+import by.pirog.suppliers.model.SupplierPriceEntity;
+import by.pirog.suppliers.repository.SupplierPriceRepository;
 import by.pirog.suppliers.util.ProductUtils;
 import by.pirog.suppliers.util.SupplierPriceUtils;
 import by.pirog.suppliers.util.SupplierUtils;

@@ -1,4 +1,4 @@
-package by.pirog.suppliers.core.enums;
+package by.pirog.suppliers.enums;
 
 public enum ProductType {
     APPLE,

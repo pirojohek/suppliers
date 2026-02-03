@@ -1,4 +1,4 @@
-package by.pirog.suppliers.core.model;
+package by.pirog.suppliers.model;
 
 import jakarta.persistence.*;
 import lombok.*;
