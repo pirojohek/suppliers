@@ -16,10 +16,4 @@ public interface SupplierPriceRepository extends JpaRepository<SupplierPriceEnti
             "sp.dateFrom <= :supplyDate and sp.dateTo >= :supplyDate and " +
             "sp.product.id = :productId")
     Optional<SupplierPriceEntity> findCurrentProductSupplierPrice(Long productId, Long supplierId, LocalDate supplyDate);
-
-    @Query("select sp from SupplierPriceEntity sp " +
-            "where sp.dateFrom <= :supplyDate and sp.dateTo >= :supplyDate and " +
-            "sp.product.id = :productId")
-    Optional<SupplierPriceEntity> findCurrentProductSupplierPriceByProductId(Long productId, LocalDate supplyDate);
-
 }
