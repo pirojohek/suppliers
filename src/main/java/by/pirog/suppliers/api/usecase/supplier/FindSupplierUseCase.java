@@ -5,9 +5,7 @@ import by.pirog.suppliers.data.supplier.SupplierData;
 import by.pirog.suppliers.exception.SupplierNotFoundException;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class FindSupplierUseCase implements FindSupplierApi {
 

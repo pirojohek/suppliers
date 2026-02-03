@@ -6,9 +6,7 @@ import by.pirog.suppliers.data.supplierPrice.SupplierProductPriceData;
 import by.pirog.suppliers.exception.SupplierProductPriceNotFoundException;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class FindCurrentProductSupplierPriceUseCase implements FindCurrentProductSupplierPriceApi {
 

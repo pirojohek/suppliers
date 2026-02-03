@@ -16,7 +16,7 @@ public class FindProductRestController {
 
     private final FindProductApi findProductApi;
 
-    @GetMapping("{id:\\d+")
+    @GetMapping("{id:\\d+}")
     public ResponseEntity<ProductPresentationV1> findProduct(
             @PathVariable("id") Long id
     ){

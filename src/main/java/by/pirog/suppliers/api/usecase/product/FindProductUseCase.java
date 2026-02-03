@@ -5,9 +5,7 @@ import by.pirog.suppliers.data.product.ProductData;
 import by.pirog.suppliers.exception.ProductNotFoundException;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class FindProductUseCase implements FindProductApi {
 
