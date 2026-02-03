@@ -1,4 +1,4 @@
-package by.pirog.suppliers.data;
+package by.pirog.suppliers.data.supply;
 
 import lombok.Builder;
 

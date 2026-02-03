@@ -1,4 +1,4 @@
-package by.pirog.suppliers.data;
+package by.pirog.suppliers.data.product;
 
 import by.pirog.suppliers.enums.ProductType;
 import lombok.Builder;

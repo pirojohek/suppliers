@@ -1,6 +1,6 @@
 package by.pirog.suppliers.spi.product;
 
-import by.pirog.suppliers.data.ProductData;
+import by.pirog.suppliers.data.product.ProductData;
 
 import java.util.Optional;
 
