@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class JpaClientFindSupplyByIdSpi implements FindSupplyByIdSpi {
+public class JpaClientFindSupplyById implements FindSupplyByIdSpi {
 
     private final SupplyRepository supplyRepository;
 
