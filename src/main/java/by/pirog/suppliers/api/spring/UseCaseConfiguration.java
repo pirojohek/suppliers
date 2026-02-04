@@ -1,14 +1,12 @@
 package by.pirog.suppliers.api.spring;
 
-import by.pirog.suppliers.api.FindCurrentProductSupplierPriceApi;
-import by.pirog.suppliers.api.FindProductApi;
-import by.pirog.suppliers.api.FindSupplierApi;
-import by.pirog.suppliers.api.FindSupplyItemsBySupplyIdApi;
+import by.pirog.suppliers.api.*;
 import by.pirog.suppliers.api.usecase.product.FindProductUseCase;
 import by.pirog.suppliers.api.usecase.supplier.FindSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplierPrice.FindCurrentProductSupplierPriceUseCase;
 import by.pirog.suppliers.api.usecase.supply.AcceptSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.FindSupplyUseCase;
+import by.pirog.suppliers.api.usecase.supply.GetSupplyDetailsUseCase;
 import by.pirog.suppliers.api.usecase.supplyItem.FindSupplyItemUseCase;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
@@ -62,6 +60,15 @@ public class UseCaseConfiguration {
             FindSupplyItemsBySupplyIdSpi findSupplyItemsBySupplyIdSpi
     ){
         return new FindSupplyItemUseCase(findSupplyItemsBySupplyIdSpi);
+    }
+
+    @Bean
+    public GetSupplyDetailsUseCase getSupplyDetailsUseCase(
+            FindSupplyByIdApi findSupplyByIdApi,
+            FindSupplyItemsBySupplyIdApi findSupplyItemsBySupplyIdApi,
+            FindSupplierApi findSupplierApi
+    ){
+        return new GetSupplyDetailsUseCase(findSupplyItemsBySupplyIdApi, findSupplyByIdApi, findSupplierApi);
     }
 }
 
