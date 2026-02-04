@@ -6,6 +6,12 @@ import by.pirog.suppliers.api.spring.webmvc.presentation.SupplierProductPricePre
 import by.pirog.suppliers.api.usecase.supplierPrice.SaveSupplierPriceUseCase;
 import by.pirog.suppliers.data.supplierPrice.CreateSupplierPriceRequestData;
 import by.pirog.suppliers.data.supplierPrice.SupplierProductPriceData;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,12 +24,18 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/supplier-price")
+@Tag(name = "SupplierPrice", description = "Создание цен поставщиков")
 public class SaveSupplierPriceRestController {
 
     private final SupplierPricePresentationMapper presentationMapper;
     private final SaveSupplierPriceUseCase saveSupplierPriceUseCase;
 
     @PostMapping
+    @Operation(summary = "Создать цену поставщика на товар")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Цена создана",
+                    content = @Content(schema = @Schema(implementation = SupplierProductPricePresentationV1.class)))
+    })
     public ResponseEntity<SupplierProductPricePresentationV1> saveSupplierPrice(
             @RequestBody CreateSupplierPriceRequestData requestData
     ) {
