@@ -21,7 +21,6 @@ public class SupplierEntity {
     @Column(name = "c_name")
     private String name;
 
-
     @OneToMany(mappedBy = "supplier")
     private List<SupplyEntity> supplies;
 }

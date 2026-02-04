@@ -21,7 +21,7 @@ import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 @Tag(name = "Product", description = "Создать продукт")
 public class SaveProductRestController {
 
