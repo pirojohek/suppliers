@@ -23,6 +23,7 @@
 - Mockito, JUnit для тестов
 - Flyway (миграции БД)
 - PostgreSQL (prod/runtime), H2 (тесты)
+- Docker compose для развертывания БД
 - springdoc-openapi (Swagger UI)
 
 ## База данных
