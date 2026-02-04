@@ -2,6 +2,7 @@ package by.pirog.suppliers.api.spring;
 
 import by.pirog.suppliers.api.*;
 import by.pirog.suppliers.api.usecase.product.FindProductUseCase;
+import by.pirog.suppliers.api.usecase.product.SaveProductUseCase;
 import by.pirog.suppliers.api.usecase.supplier.FindSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplier.SaveSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplierPrice.FindCurrentProductSupplierPriceUseCase;
@@ -10,6 +11,7 @@ import by.pirog.suppliers.api.usecase.supply.FindSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.GetSupplyDetailsUseCase;
 import by.pirog.suppliers.api.usecase.supplyItem.FindSupplyItemUseCase;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
+import by.pirog.suppliers.spi.product.SaveProductSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import by.pirog.suppliers.spi.supplier.SaveSupplierSpi;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
@@ -76,6 +78,11 @@ public class UseCaseConfiguration {
     @Bean
     public SaveSupplierUseCase saveSupplierUseCase(SaveSupplierSpi saveSupplierSpi){
         return new SaveSupplierUseCase(saveSupplierSpi);
+    }
+
+    @Bean
+    public SaveProductUseCase saveProductUseCase(SaveProductSpi saveProductSpi){
+        return new SaveProductUseCase(saveProductSpi);
     }
 }
 
