@@ -7,9 +7,11 @@ import by.pirog.suppliers.api.usecase.product.FindProductUseCase;
 import by.pirog.suppliers.api.usecase.supplier.FindSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplierPrice.FindCurrentProductSupplierPriceUseCase;
 import by.pirog.suppliers.api.usecase.supply.AcceptSupplyUseCase;
+import by.pirog.suppliers.api.usecase.supply.FindSupplyUseCase;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
+import by.pirog.suppliers.spi.supply.FindSupplyByIdSpi;
 import by.pirog.suppliers.spi.supply.SaveSupplySpi;
 import by.pirog.suppliers.spi.supplyItem.SaveSupplyItemsSpi;
 import org.springframework.context.annotation.Bean;
@@ -43,6 +45,13 @@ public class UseCaseConfiguration {
             SaveSupplySpi saveSupplySpi, SaveSupplyItemsSpi saveSupplyItemsSpi) {
         return new AcceptSupplyUseCase(findSupplierApi, findProductApi, findCurrentProductSupplierPriceApi,
                 saveSupplySpi, saveSupplyItemsSpi);
+    }
+
+    @Bean
+    public FindSupplyUseCase findSupplyUseCase(
+            FindSupplyByIdSpi findSupplyByIdSpi
+    ){
+        return new FindSupplyUseCase(findSupplyByIdSpi);
     }
 }
 

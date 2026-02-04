@@ -1,5 +1,6 @@
 package by.pirog.suppliers.util;
 
+import by.pirog.suppliers.data.supply.SupplyAcceptData;
 import by.pirog.suppliers.storage.model.SupplierEntity;
 import by.pirog.suppliers.storage.model.SupplyEntity;
 
@@ -19,6 +20,13 @@ public class SupplyUtils {
                 .id(1L)
                 .supplyDate(LocalDate.now())
                 .supplier(supplier)
+                .build();
+    }
+
+    public static SupplyAcceptData getSupplyAcceptData(){
+        return SupplyAcceptData.builder()
+                .supplyDate(LocalDate.now())
+                .supplierId(1L)
                 .build();
     }
 }
