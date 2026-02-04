@@ -14,7 +14,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class JpaClientSaveSupplyItemSpi implements SaveSupplyItemsSpi {
+public class JpaClientSaveSupplyItem implements SaveSupplyItemsSpi {
 
     private final SupplyItemRepository supplyItemRepository;
 
