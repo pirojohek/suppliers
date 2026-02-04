@@ -11,7 +11,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,10 +35,12 @@ public class SaveSupplierRestController {
     @Operation(summary = "Создать поставщика")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Поставщик создан",
-                    content = @Content(schema = @Schema(implementation = SupplierPresentationV1.class)))
+                    content = @Content(schema = @Schema(implementation = SupplierPresentationV1.class))),
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<SupplierPresentationV1> createSupplier(
-            @RequestBody CreateSupplierRequestData requestData
+            @Valid @RequestBody CreateSupplierRequestData requestData
     ) {
         var result = this.saveSupplierApi.createSupplier(requestData);
         var response = this.supplierPresentationMapper.supplierDataToSupplierPresentationV1(result);

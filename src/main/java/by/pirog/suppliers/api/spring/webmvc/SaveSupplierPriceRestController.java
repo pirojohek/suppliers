@@ -13,12 +13,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -34,10 +36,12 @@ public class SaveSupplierPriceRestController {
     @Operation(summary = "Создать цену поставщика на товар")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Цена создана",
-                    content = @Content(schema = @Schema(implementation = SupplierProductPricePresentationV1.class)))
+                    content = @Content(schema = @Schema(implementation = SupplierProductPricePresentationV1.class))),
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<SupplierProductPricePresentationV1> saveSupplierPrice(
-            @RequestBody CreateSupplierPriceRequestData requestData
+            @Valid @RequestBody CreateSupplierPriceRequestData requestData
     ) {
         var result = this.saveSupplierPriceUseCase.createSupplierPrice(requestData);
 

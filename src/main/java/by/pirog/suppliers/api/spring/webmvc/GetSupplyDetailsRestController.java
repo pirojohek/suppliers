@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,9 @@ public class GetSupplyDetailsRestController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Детали поставки",
                     content = @Content(schema = @Schema(implementation = SupplyDetailsPresentationV1.class))),
-            @ApiResponse(responseCode = "404", description = "Поставка не найдена", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "404", description = "Поставка не найдена", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<SupplyDetailsPresentationV1> getSupplyDetails(
             @PathVariable("id") Long supplyId

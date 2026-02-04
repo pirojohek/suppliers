@@ -17,13 +17,13 @@ public class FindSupplyItemUseCase implements FindSupplyItemsBySupplyIdApi {
         var items = this.findSupplyItemsBySupplyIdSpi.findSupplyItems(supplyId);
 
         return items.stream().map(item ->
-                SupplyItemDetailsData.builder()
-                        .cost(item.weightKg().multiply(item.pricePerKg()))
-                        .pricePerKg(item.pricePerKg())
-                        .weightKg(item.weightKg())
-                        .productData(item.productData())
-                        .build())
-                .toList();
+                SupplyItemDetailsData.from(
+                        item.productData(),
+                        item.weightKg(),
+                        item.pricePerKg(),
+                        item.weightKg().multiply(item.pricePerKg())
+                )
+        ).toList();
 
     }
 }

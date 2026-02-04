@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +37,13 @@ public class GetSupplierProductReportRestController {
             @ApiResponse(responseCode = "200", description = "Отчет сформирован",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = SupplierProductReportPresentationV1.class))),
-            @ApiResponse(responseCode = "400", description = "Некорректные параметры запроса", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Некорректные параметры запроса", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<List<SupplierProductReportPresentationV1>> getReport(
-            @Parameter(description = "Дата начала периода", example = "2026-02-04", required = true)
+            @Parameter(description = "Дата начала периода", example = "2026-02-01", required = true)
             @RequestParam("from") LocalDate from,
-            @Parameter(description = "Дата окончания периода", example = "2026-02-15", required = true)
+            @Parameter(description = "Дата окончания периода", example = "2026-02-28", required = true)
             @RequestParam("to") LocalDate to
     ) {
         var report = this.getSupplierProductReportApi.getReport(from, to);
@@ -51,4 +52,3 @@ public class GetSupplierProductReportRestController {
                 .toList());
     }
 }
-

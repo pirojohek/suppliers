@@ -9,7 +9,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,10 +32,12 @@ public class AcceptSupplyRestController {
     @Operation(summary = "Принять поставку")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Поставка принята",
-                    content = @Content(schema = @Schema(implementation = AcceptSupplyPresentationV1.class)))
+                    content = @Content(schema = @Schema(implementation = AcceptSupplyPresentationV1.class))),
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<AcceptSupplyPresentationV1> acceptSupply(
-            @RequestBody SupplyAcceptData data
+            @Valid @RequestBody SupplyAcceptData data
     ) {
         Long response = acceptSupplyApi.acceptSupply(data);
 

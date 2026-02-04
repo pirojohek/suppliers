@@ -10,7 +10,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,10 +34,12 @@ public class SaveProductRestController {
     @Operation(summary = "Создать продукт")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Продукт создан",
-                    content = @Content(schema = @Schema(implementation = ProductPresentationV1.class)))
+                    content = @Content(schema = @Schema(implementation = ProductPresentationV1.class))),
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<ProductPresentationV1> createProduct(
-            @RequestBody CreateProductRequestData requestData
+            @Valid @RequestBody CreateProductRequestData requestData
     ) {
         var createdProduct = this.saveProductApi.createProduct(requestData);
 

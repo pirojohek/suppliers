@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,11 +40,11 @@ public class FindAllProductsRestController {
             @ApiResponse(responseCode = "200", description = "Список товаров с ценами",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ProductsWithPricesPresentationV1.class))),
-            @ApiResponse(responseCode = "400", description = "Некорректные параметры запроса", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Некорректные параметры запроса", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<List<ProductsWithPricesPresentationV1>> getAllProductsWithPrices(
-            @Parameter(description = "Дата, на которую требуется получить цены", example = "2026-02-05", required = true)
+            @Parameter(description = "Дата, на которую требуется получить цены", example = "2026-02-15", required = true)
             @RequestParam("date") LocalDate date
     ) {
         var result = this.findAllProductsWithPricesInDateApi.findAll(date);

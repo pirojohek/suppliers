@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,10 @@ public class FindProductRestController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Продукт найден",
                     content = @Content(schema = @Schema(implementation = ProductPresentationV1.class))),
-            @ApiResponse(responseCode = "404", description = "Продукт не найден", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Некорректный запрос",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "404", description = "Продукт не найден",
+                    content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<ProductPresentationV1> findProduct(
             @PathVariable("id") Long id
