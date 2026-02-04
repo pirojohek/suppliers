@@ -5,6 +5,12 @@ import by.pirog.suppliers.api.spring.webmvc.mapper.SupplierPresentationMapper;
 import by.pirog.suppliers.api.spring.webmvc.presentation.SupplierPresentationV1;
 import by.pirog.suppliers.api.usecase.supplier.SaveSupplierUseCase;
 import by.pirog.suppliers.data.supplier.CreateSupplierRequestData;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +23,18 @@ import java.net.URI;
 @RestController
 @RequestMapping("/api/supplier")
 @RequiredArgsConstructor
+@Tag(name = "Supplier", description = "Создать поставщика")
 public class SaveSupplierRestController {
 
     private final SaveSupplierApi saveSupplierApi;
     private final SupplierPresentationMapper supplierPresentationMapper;
 
     @PostMapping
+    @Operation(summary = "Создать поставщика")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Поставщик создан",
+                    content = @Content(schema = @Schema(implementation = SupplierPresentationV1.class)))
+    })
     public ResponseEntity<SupplierPresentationV1> createSupplier(
             @RequestBody CreateSupplierRequestData requestData
     ) {

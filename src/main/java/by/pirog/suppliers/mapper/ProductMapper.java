@@ -14,6 +14,7 @@ public interface ProductMapper {
     @Mapping(source = "type", target = "productType")
     ProductData productEntityToProductData(ProductEntity product);
 
+    @Mapping(source = "type", target = "type")
     ProductEntity createProductRequestToProductEntity(CreateProductRequestData requestData);
 
 }
