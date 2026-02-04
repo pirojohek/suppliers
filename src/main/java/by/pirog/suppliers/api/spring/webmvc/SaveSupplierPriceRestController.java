@@ -1,0 +1,35 @@
+package by.pirog.suppliers.api.spring.webmvc;
+
+
+import by.pirog.suppliers.api.spring.webmvc.mapper.SupplierPricePresentationMapper;
+import by.pirog.suppliers.api.spring.webmvc.presentation.SupplierProductPricePresentationV1;
+import by.pirog.suppliers.api.usecase.supplierPrice.SaveSupplierPriceUseCase;
+import by.pirog.suppliers.data.supplierPrice.CreateSupplierPriceRequestData;
+import by.pirog.suppliers.data.supplierPrice.SupplierProductPriceData;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/supplier-price")
+public class SaveSupplierPriceRestController {
+
+    private final SupplierPricePresentationMapper presentationMapper;
+    private final SaveSupplierPriceUseCase saveSupplierPriceUseCase;
+
+    @PostMapping
+    public ResponseEntity<SupplierProductPricePresentationV1> saveSupplierPrice(
+            @RequestBody CreateSupplierPriceRequestData requestData
+    ) {
+        var result = this.saveSupplierPriceUseCase.createSupplierPrice(requestData);
+
+        return ResponseEntity.created(URI.create("/api/supplier-price/%d".formatted(result.id())))
+                .body(presentationMapper.supplierPriceDataToSupplierPresentation(result));
+    }
+}

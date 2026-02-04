@@ -6,6 +6,7 @@ import by.pirog.suppliers.api.usecase.product.SaveProductUseCase;
 import by.pirog.suppliers.api.usecase.supplier.FindSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplier.SaveSupplierUseCase;
 import by.pirog.suppliers.api.usecase.supplierPrice.FindCurrentProductSupplierPriceUseCase;
+import by.pirog.suppliers.api.usecase.supplierPrice.SaveSupplierPriceUseCase;
 import by.pirog.suppliers.api.usecase.supply.AcceptSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.FindSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.GetSupplyDetailsUseCase;
@@ -14,7 +15,9 @@ import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import by.pirog.suppliers.spi.product.SaveProductSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import by.pirog.suppliers.spi.supplier.SaveSupplierSpi;
+import by.pirog.suppliers.spi.supplierPrice.CheckSupplierPriceOverlapSpi;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
+import by.pirog.suppliers.spi.supplierPrice.SaveSupplierPriceSpi;
 import by.pirog.suppliers.spi.supply.FindSupplyByIdSpi;
 import by.pirog.suppliers.spi.supply.SaveSupplySpi;
 import by.pirog.suppliers.spi.supplyItem.FindSupplyItemsBySupplyIdSpi;
@@ -84,5 +87,15 @@ public class UseCaseConfiguration {
     public SaveProductUseCase saveProductUseCase(SaveProductSpi saveProductSpi){
         return new SaveProductUseCase(saveProductSpi);
     }
+
+    @Bean
+    public SaveSupplierPriceUseCase saveSupplierPriceUseCase(
+            SaveSupplierPriceSpi saveSupplierPriceSpi,
+            FindProductApi findProductApi,
+            FindSupplierApi findSupplierApi,
+            CheckSupplierPriceOverlapSpi checkSupplierPriceOverlapSpi){
+        return new SaveSupplierPriceUseCase(saveSupplierPriceSpi, findProductApi, findSupplierApi, checkSupplierPriceOverlapSpi);
+    }
 }
+
 

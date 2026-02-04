@@ -1,5 +1,6 @@
 package by.pirog.suppliers.mapper;
 
+import by.pirog.suppliers.data.supplierPrice.CreateSupplierPriceRequestData;
 import by.pirog.suppliers.data.supplierPrice.SupplierProductPriceData;
 import by.pirog.suppliers.storage.model.SupplierPriceEntity;
 import org.mapstruct.Mapper;

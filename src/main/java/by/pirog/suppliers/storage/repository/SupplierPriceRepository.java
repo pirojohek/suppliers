@@ -16,4 +16,19 @@ public interface SupplierPriceRepository extends JpaRepository<SupplierPriceEnti
             "sp.dateFrom <= :supplyDate and sp.dateTo >= :supplyDate and " +
             "sp.product.id = :productId")
     Optional<SupplierPriceEntity> findCurrentProductSupplierPrice(Long productId, Long supplierId, LocalDate supplyDate);
+
+    @Query("""
+        select count(sp) > 0
+        from SupplierPriceEntity sp
+        where sp.supplier.id = :supplierId
+          and sp.product.id = :productId
+          and :dateFrom <= sp.dateTo
+          and :dateTo >= sp.dateFrom
+    """)
+    boolean existsOverlappingPrice(
+            Long supplierId,
+            Long productId,
+            LocalDate dateFrom,
+            LocalDate dateTo
+    );
 }
