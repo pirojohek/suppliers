@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
-public class JpaCheckSupplierPriceOverlap implements CheckSupplierPriceOverlapSpi {
+public class JpaClientCheckSupplierPriceOverlap implements CheckSupplierPriceOverlapSpi {
 
     private final SupplierPriceRepository repository;
 
