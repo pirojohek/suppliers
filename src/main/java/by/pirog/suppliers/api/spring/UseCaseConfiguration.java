@@ -1,6 +1,7 @@
 package by.pirog.suppliers.api.spring;
 
 import by.pirog.suppliers.api.*;
+import by.pirog.suppliers.api.usecase.product.FindAllProductsWithPricesUseCase;
 import by.pirog.suppliers.api.usecase.product.FindProductUseCase;
 import by.pirog.suppliers.api.usecase.product.SaveProductUseCase;
 import by.pirog.suppliers.api.usecase.supplier.FindSupplierUseCase;
@@ -11,11 +12,13 @@ import by.pirog.suppliers.api.usecase.supply.AcceptSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.FindSupplyUseCase;
 import by.pirog.suppliers.api.usecase.supply.GetSupplyDetailsUseCase;
 import by.pirog.suppliers.api.usecase.supplyItem.FindSupplyItemUseCase;
+import by.pirog.suppliers.spi.product.FindAllProductsSpi;
 import by.pirog.suppliers.spi.product.FindProductByIdSpi;
 import by.pirog.suppliers.spi.product.SaveProductSpi;
 import by.pirog.suppliers.spi.supplier.FindSupplierByIdSpi;
 import by.pirog.suppliers.spi.supplier.SaveSupplierSpi;
 import by.pirog.suppliers.spi.supplierPrice.CheckSupplierPriceOverlapSpi;
+import by.pirog.suppliers.spi.supplierPrice.FindAllSupplierPriceForProductSpi;
 import by.pirog.suppliers.spi.supplierPrice.FindCurrentProductSupplierPriceSpi;
 import by.pirog.suppliers.spi.supplierPrice.SaveSupplierPriceSpi;
 import by.pirog.suppliers.spi.supply.FindSupplyByIdSpi;
@@ -58,14 +61,14 @@ public class UseCaseConfiguration {
     @Bean
     public FindSupplyUseCase findSupplyUseCase(
             FindSupplyByIdSpi findSupplyByIdSpi
-    ){
+    ) {
         return new FindSupplyUseCase(findSupplyByIdSpi);
     }
 
     @Bean
     public FindSupplyItemsBySupplyIdApi findSupplyItemsBySupplyIdApi(
             FindSupplyItemsBySupplyIdSpi findSupplyItemsBySupplyIdSpi
-    ){
+    ) {
         return new FindSupplyItemUseCase(findSupplyItemsBySupplyIdSpi);
     }
 
@@ -74,17 +77,17 @@ public class UseCaseConfiguration {
             FindSupplyByIdApi findSupplyByIdApi,
             FindSupplyItemsBySupplyIdApi findSupplyItemsBySupplyIdApi,
             FindSupplierApi findSupplierApi
-    ){
+    ) {
         return new GetSupplyDetailsUseCase(findSupplyItemsBySupplyIdApi, findSupplyByIdApi, findSupplierApi);
     }
 
     @Bean
-    public SaveSupplierUseCase saveSupplierUseCase(SaveSupplierSpi saveSupplierSpi){
+    public SaveSupplierUseCase saveSupplierUseCase(SaveSupplierSpi saveSupplierSpi) {
         return new SaveSupplierUseCase(saveSupplierSpi);
     }
 
     @Bean
-    public SaveProductUseCase saveProductUseCase(SaveProductSpi saveProductSpi){
+    public SaveProductUseCase saveProductUseCase(SaveProductSpi saveProductSpi) {
         return new SaveProductUseCase(saveProductSpi);
     }
 
@@ -93,8 +96,16 @@ public class UseCaseConfiguration {
             SaveSupplierPriceSpi saveSupplierPriceSpi,
             FindProductApi findProductApi,
             FindSupplierApi findSupplierApi,
-            CheckSupplierPriceOverlapSpi checkSupplierPriceOverlapSpi){
+            CheckSupplierPriceOverlapSpi checkSupplierPriceOverlapSpi) {
         return new SaveSupplierPriceUseCase(saveSupplierPriceSpi, findProductApi, findSupplierApi, checkSupplierPriceOverlapSpi);
+    }
+
+    @Bean
+    public FindAllProductsWithPricesInDateApi findAllProductsWithPricesInDateApi(
+            FindAllProductsSpi findAllProductsSpi,
+            FindAllSupplierPriceForProductSpi findAllSupplierPriceForProductSpi
+            ) {
+        return new FindAllProductsWithPricesUseCase(findAllProductsSpi, findAllSupplierPriceForProductSpi);
     }
 }
 

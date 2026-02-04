@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 @Tag(name = "Product", description = "Получить информацию о продукте")
 public class FindProductRestController {
 

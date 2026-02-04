@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -31,4 +32,10 @@ public interface SupplierPriceRepository extends JpaRepository<SupplierPriceEnti
             LocalDate dateFrom,
             LocalDate dateTo
     );
+
+    @Query("select sp from SupplierPriceEntity sp " +
+            "where " +
+            "sp.dateFrom <= :supplyDate and sp.dateTo >= :supplyDate and " +
+            "sp.product.id = :productId")
+    List<SupplierPriceEntity> findSupplierPriceEntityByProductId(Long productId , LocalDate supplyDate);
 }
